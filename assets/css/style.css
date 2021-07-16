@@ -1,0 +1,225 @@
+/* MAIN CSS */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+body {
+  background-color: rgb(182, 228, 186);
+  font: 16px sans-serif,arial;
+}
+
+header {
+  position: fixed;
+  background-color: rgb(6, 119, 49);
+  border-bottom: 5px solid black;
+  height: 65px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+header > .logo {
+  font-weight: bold;
+  position: fixed;
+  margin: 1.5em 0em 1.5em 1em;
+  color: white;
+}
+
+header > .menu {
+  position: absolute;
+  right: 0;
+  margin: 1.5em 1.5em 0em 1em;
+}
+
+.menu > a {
+  text-decoration: none;
+  color: white;
+}
+
+.content {
+  margin: 90px 10px 50px 250px;
+  padding-bottom: 40px;
+}
+
+.registerBox{
+  position: absolute;
+  width: 40vw;
+  height: 50vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 40px 40px 40px;
+  overflow-y: auto;
+}
+
+.registerBox > h1 {
+  text-align: center;
+}
+
+.loginBox{
+  position: absolute;
+  width: 40vw;
+  height: 40vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 40px 40px 40px;
+  overflow-y: hidden;
+}
+
+.loginBox > h1 {
+  text-align: center;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+#password {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+input[type=checkbox] {
+  padding: 12px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+input[type=tel] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.flashMessage {
+  position: fixed;
+  width: 30vw;
+  height: 7vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 10px 10px 25px;
+  z-index: 1;
+}
+
+.closeButton {
+  float: right;
+  font-weight: bold;
+  margin-top: -50px;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: rgb(95, 238, 155);
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  padding: 12px;
+  border: 0px;
+  border-radius: 5px;
+
+}
+
+footer {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(5, 82, 34);
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SideBar Css */
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  top: 70px;
+  left: 0;
+  background-color: rgb(6, 119, 49);
+}
+
+
+/* Book Card CSS */
+
+.card {
+  display: inline-table;
+  position: relative;
+  margin: 20px 10px 30px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.bookImg {
+  border-radius: 5px 5px 0 0;
+  height: 350px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.containerCard {
+  background-color: whitesmoke;
+  padding: 2px 16px;
+  height : auto;
+  overflow-wrap: break-word;
+}
