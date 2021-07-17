@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (empty($_SESSION['levelUser'])){
+    $_SESSION['levelUser'] = "guest";
+}
+require_once("../config/baseurl.php");
 require_once("../template/header.php");
 require_once("../backend/pagination.php");
 require_once("../config/connection.php");
@@ -22,12 +26,9 @@ $paging->execute();
 
 <body>
     <div class="sidebar">
-
+    <?php require_once("../backend/sidebar.php") ?>
     </div>
     <div class="content">
-        <div class="searchBox">
-            <form
-        </div>
         <?php foreach ($paging as $result){
             echo "<div class='card'>";
             echo "<img class='bookImg' src='img_avatar.png' alt='Avatar' style='width:100%'></img>";
@@ -41,46 +42,46 @@ $paging->execute();
             echo "</div>";
         }
         ?>
-        <div class="pagination">
+        <div class="clear pagination">
             <?php 
             $delta = 1; // +/- 1 page from current
             $start = max(1, $page - $delta);
             $end = min($pagination -> totalPages(), $page + $delta);
             
             if($page-1 >=1){
-                echo "<a href=\"guest.php?page=".($page-1)."\"><-- Prev</a>";
+                echo "<a class=\"items\" href=\"guest.php?page=".($page-1)."\">&#8592; Prev</a>";
             } else {
-                echo "<-- Prev";
+                echo "<span class=\"items\">&#8592; Prev</span>";
             }
 
             if ($start > 1) {
                 // place first page link
-                echo " <a href=\"guest.php?page=1\">1</a> "; 
+                echo " <a class=\"items\" href=\"guest.php?page=1\">1</a> "; 
                 if ($start > 2) {
                     // place "..." if $start is not next to "1"
-                    echo " ... ";
+                    echo "<span class=\"items\">...</span> ";
                 }
             }
             for ($i = $start; $i <= $end; $i++) {
                 if ($i == $page) {
-                    echo " <span class=\"selected\">{$i}</span> ";
+                    echo " <span class=\"items selected\">{$i}</span> ";
                 } else {
-                    echo " <a href=\"guest.php?page={$i}\">{$i}</a> ";
+                    echo " <a class=\"items\" href=\"guest.php?page={$i}\">{$i}</a> ";
                 }
             }
             if ($end < $pagination -> totalPages()) {
                 if ($end < $pagination -> totalPages() - 1) {
                     // place "..." if $end is not prev to "1"
-                    echo " ... ";
+                    echo " <span class=\"items\">...</span> ";
                 }
                 // place last page link
-                echo " <a href=\"guest.php?page={$pagination -> totalPages()}\">{$pagination -> totalPages()}</a>"; 
+                echo " <a class=\"items\" href=\"guest.php?page={$pagination -> totalPages()}\">{$pagination -> totalPages()}</a>"; 
             }
 
             if ($page < $pagination->totalPages()){
-                echo "<a href=\"guest.php?page=".($page+1)."\">Next --></a>";
+                echo "<a class=\"items\" href=\"guest.php?page=".($page+1)."\">Next &#8594;</a>";
             } else {
-                echo "Next -->";
+                echo "<span class=\"items\">Next &#8594;</span>";
             }
             ?>
         </div>

@@ -20,6 +20,7 @@ if (empty($_SESSION["noRegistration"])) {
             <input type="checkbox" id="showPassword">Show Password<br>
             <input type="submit" class="btn-success" name="submit" value="Login"></button>
         </form>
+        <center><a style="text-decoration: none;" href="<?php base_url() ?>">→ Lanjutkan sebagai guest</a></center>
     </div>
 </body>
 <script>

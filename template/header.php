@@ -1,6 +1,3 @@
-<?php
-require_once("../config/baseurl.php");
-?>
 <html>
 <header>
     <link rel="stylesheet" href="<?php base_url() ?>assets/css/style.css">

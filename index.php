@@ -8,6 +8,7 @@ if(!empty($_SESSION["noRegistration"])){
         header("Location: ".base_url()."dashboard/admin.php");
     }
 }else{
+    $_SESSION['levelUser'] = 'guest';
     header("Location: ".base_url()."dashboard/guest.php");
 }
 ?>

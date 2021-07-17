@@ -223,3 +223,18 @@ footer {
   height : auto;
   overflow-wrap: break-word;
 }
+
+.pagination {
+  text-align: center;
+  clear: both;
+  background-color: whitesmoke;
+}
+
+.pagination > .items {
+  font: calibri;
+  text-decoration: none;
+  display:inline-table;
+  border: solid 1px whitesmoke;
+  padding: 4px;
+  margin : 0;
+}

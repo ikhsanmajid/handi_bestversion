@@ -19,10 +19,10 @@ if($_POST["submit"] == "Login"){
             $_SESSION['namaLengkap'] = $user[0]['namaLengkap_user'];
             $_SESSION['levelUser'] = $user[0]['level_user'];
             //echo "Berhasil";
-            header("Location: ".base_url()."index.php");
+            header("Location: ../index.php");
         }else{
             //echo "Tidak Berhasil";
-            header("Location: ".base_url()."login.php?message=userTidakDitemukan");
+            header("Location: ../login.php?message=userTidakDitemukan");
         }
 
     } catch (PDOException $e) {

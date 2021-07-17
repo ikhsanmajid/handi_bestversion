@@ -2,12 +2,20 @@
 session_start();
 require_once("../config/baseurl.php");
 require_once("../template/header.php");
-?>
+if ($_SESSION['levelUser'] == 'admin') {
+    ?>
 <body>
-    <div class="container">
-        <h1>Haiii, ini Admin</h1>
+    <div class="sidebar">
+    <?php require_once("../backend/sidebar.php") ?>
     </div>
+    <div class="content">
+        
+    <?php
+    require_once("../template/footer.php"); ?>
+    </div>
+    
 </body>
 <?php
-include_once("../template/footer.php");
-?>
+}else{
+    header("Location: ../login.php");
+}
