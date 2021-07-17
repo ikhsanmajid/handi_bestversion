@@ -33,65 +33,67 @@ if ($_SESSION['levelUser'] == 'admin') {
             $paging = $conn->prepare($sql);
             $paging->execute();
             //--END Get Buku--//
-
-            foreach ($paging as $result) {
-                echo "<div class='card'>";
-                echo "<img class='bookImg' src='img_avatar.png' alt='Avatar' style='width:100%'></img>";
-                echo "<div class='containerCard'>";
-                echo "<h2>{$result['judul_buku']}</h2><br>";
-                echo "<p>Halaman : {$result['halaman_buku']}</p>";
-                echo "<p>Penerbit : {$result['penerbit_buku']}</p>";
-                echo "<p>Penulis : {$result['penulis_buku']}</p>";
-                echo "<p>Kategori : {$result['kategori_buku']}</p>";
-                echo "</div>";
-                echo "</div>";
-            }
-
-            echo "<div class=\"clear pagination\">";
-
-            $delta = 1; // +/- 1 page from current
-            $start = max(1, $page - $delta);
-            $end = min($pagination -> totalPages(), $page + $delta);
-            
-            if($page-1 >=1){
-                echo "<a class=\"items\" href=\"guest.php?page=".($page-1)."\">&#8592; Prev</a>";
-            } else {
-                echo "<span class=\"items\">&#8592; Prev</span>";
-            }
-
-            if ($start > 1) {
-                // place first page link
-                echo " <a class=\"items\" href=\"guest.php?page=1\">1</a> "; 
-                if ($start > 2) {
-                    // place "..." if $start is not next to "1"
-                    echo "<span class=\"items\">...</span> ";
+            if(!isset($_GET['search'])){
+                
+            }else{
+                foreach ($paging as $result) {
+                    echo "<div class='card'>";
+                    echo "<img class='bookImg' src='img_avatar.png' alt='Avatar' style='width:100%'></img>";
+                    echo "<div class='containerCard'>";
+                    echo "<h2>{$result['judul_buku']}</h2><br>";
+                    echo "<p>Halaman : {$result['halaman_buku']}</p>";
+                    echo "<p>Penerbit : {$result['penerbit_buku']}</p>";
+                    echo "<p>Penulis : {$result['penulis_buku']}</p>";
+                    echo "<p>Kategori : {$result['kategori_buku']}</p>";
+                    echo "</div>";
+                    echo "</div>";
                 }
-            }
-            for ($i = $start; $i <= $end; $i++) {
-                if ($i == $page) {
-                    echo " <span class=\"items selected\">{$i}</span> ";
+    
+                echo "<div class=\"clear pagination\">";
+    
+                $delta = 1; // +/- 1 page from current
+                $start = max(1, $page - $delta);
+                $end = min($pagination -> totalPages(), $page + $delta);
+                
+                if($page-1 >=1){
+                    echo "<a class=\"items\" href=\"guest.php?page=".($page-1)."\">&#8592; Prev</a>";
                 } else {
-                    echo " <a class=\"items\" href=\"guest.php?page={$i}\">{$i}</a> ";
+                    echo "<span class=\"items\">&#8592; Prev</span>";
                 }
-            }
-            if ($end < $pagination -> totalPages()) {
-                if ($end < $pagination -> totalPages() - 1) {
-                    // place "..." if $end is not prev to "1"
-                    echo " <span class=\"items\">...</span> ";
+    
+                if ($start > 1) {
+                    // place first page link
+                    echo " <a class=\"items\" href=\"guest.php?page=1\">1</a> "; 
+                    if ($start > 2) {
+                        // place "..." if $start is not next to "1"
+                        echo "<span class=\"items\">...</span> ";
+                    }
                 }
-                // place last page link
-                echo " <a class=\"items\" href=\"guest.php?page={$pagination -> totalPages()}\">{$pagination -> totalPages()}</a>"; 
-            }
-
-            if ($page < $pagination->totalPages()){
-                echo "<a class=\"items\" href=\"guest.php?page=".($page+1)."\">Next &#8594;</a>";
-            } else {
-                echo "<span class=\"items\">Next &#8594;</span>";
-            }
-            echo "</div>";
-
-            //END OF HALAMAN DASHBOARD//
-
+                for ($i = $start; $i <= $end; $i++) {
+                    if ($i == $page) {
+                        echo " <span class=\"items selected\">{$i}</span> ";
+                    } else {
+                        echo " <a class=\"items\" href=\"guest.php?page={$i}\">{$i}</a> ";
+                    }
+                }
+                if ($end < $pagination -> totalPages()) {
+                    if ($end < $pagination -> totalPages() - 1) {
+                        // place "..." if $end is not prev to "1"
+                        echo " <span class=\"items\">...</span> ";
+                    }
+                    // place last page link
+                    echo " <a class=\"items\" href=\"guest.php?page={$pagination -> totalPages()}\">{$pagination -> totalPages()}</a>"; 
+                }
+    
+                if ($page < $pagination->totalPages()){
+                    echo "<a class=\"items\" href=\"guest.php?page=".($page+1)."\">Next &#8594;</a>";
+                } else {
+                    echo "<span class=\"items\">Next &#8594;</span>";
+                }
+                echo "</div>";
+    
+                //END OF HALAMAN DASHBOARD//
+            }          
         }else{
             echo "404 Not Found";
         }
