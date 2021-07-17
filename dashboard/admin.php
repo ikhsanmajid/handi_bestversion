@@ -5,23 +5,6 @@ require_once("../config/connection.php");
 require_once("../backend/pagination.php");
 require_once("../template/header.php");
 if ($_SESSION['levelUser'] == 'admin') {
-
-//GET BUKU
-$sql = "SELECT * FROM buku";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-
-$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-$perPage = 20;
-$totalCount = $stmt->rowCount();
-
-$pagination = new Pagination($page,$perPage,$totalCount);
-
-$sql = "SELECT * FROM buku ORDER BY waktuAdd_buku ASC LIMIT {$perPage} OFFSET {$pagination->offset()}";
-$paging = $conn->prepare($sql);
-$paging->execute();
-//--END Get Buku--//
-
 ?>
 
 <body>
@@ -34,7 +17,23 @@ $paging->execute();
         <?php
         
         //HALAMAN DASHBOARD//
-        if (empty($_GET['menu']) || $_GET['menu'] == 'dashboard'){
+        if (!isset($_GET['menu']) || $_GET['menu'] == 'dashboard'){
+            //GET BUKU
+            $sql = "SELECT * FROM buku";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+            $perPage = 20;
+            $totalCount = $stmt->rowCount();
+
+            $pagination = new Pagination($page,$perPage,$totalCount);
+
+            $sql = "SELECT * FROM buku ORDER BY waktuAdd_buku ASC LIMIT {$perPage} OFFSET {$pagination->offset()}";
+            $paging = $conn->prepare($sql);
+            $paging->execute();
+            //--END Get Buku--//
+
             foreach ($paging as $result) {
                 echo "<div class='card'>";
                 echo "<img class='bookImg' src='img_avatar.png' alt='Avatar' style='width:100%'></img>";
@@ -93,7 +92,7 @@ $paging->execute();
 
             //END OF HALAMAN DASHBOARD//
 
-        }else {
+        }else{
             echo "404 Not Found";
         }
         ?>
